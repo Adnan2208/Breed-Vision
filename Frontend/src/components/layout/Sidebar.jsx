@@ -5,7 +5,6 @@ import {
     Scan,
     BarChart3,
     Shield,
-    Settings,
     HelpCircle,
     ChevronLeft,
     ChevronRight
@@ -36,7 +35,6 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
     ];
 
     const bottomItems = [
-        { name: 'Settings', path: '/settings', icon: Settings },
         { name: 'Help', path: '/help', icon: HelpCircle },
     ];
 

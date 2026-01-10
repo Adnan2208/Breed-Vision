@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage';
 import AnalyzePage from './pages/AnalyzePage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import AdvisoryPage from './pages/AdvisoryPage';
+import HelpPage from './pages/HelpPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/analyze" element={<AnalyzePage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/advisory" element={<AdvisoryPage />} />
+        <Route path="/help" element={<HelpPage />} />
       </Routes>
     </Router>
   );

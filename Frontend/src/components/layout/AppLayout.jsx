@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { Bell, User, Search, Home } from 'lucide-react';
+import { Bell, Search, Home } from 'lucide-react';
 
 const AppLayout = ({ children }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -62,17 +62,6 @@ const AppLayout = ({ children }) => {
                             <button className="relative p-2 rounded-xl hover:bg-surface-hover transition-colors">
                                 <Bell className="w-5 h-5 text-text-secondary" />
                                 <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary rounded-full" />
-                            </button>
-
-                            {/* Profile */}
-                            <button className="flex items-center gap-3 p-2 pr-4 rounded-xl hover:bg-surface-hover transition-colors">
-                                <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
-                                    <User className="w-5 h-5 text-white" />
-                                </div>
-                                <div className="hidden md:block text-left">
-                                    <p className="text-sm font-medium text-text">Admin User</p>
-                                    <p className="text-xs text-text-muted">Administrator</p>
-                                </div>
                             </button>
                         </div>
                     </div>

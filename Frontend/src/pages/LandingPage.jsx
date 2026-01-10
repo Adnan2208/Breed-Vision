@@ -61,11 +61,7 @@ const LandingPage = () => {
                                     <p className="text-sm text-text-muted">Model Accuracy</p>
                                 </div>
                                 <div>
-                                    <p className="text-3xl font-bold text-secondary">15K+</p>
-                                    <p className="text-sm text-text-muted">Images Analyzed</p>
-                                </div>
-                                <div>
-                                    <p className="text-3xl font-bold text-accent-dark">12+</p>
+                                    <p className="text-3xl font-bold text-accent-dark">40+</p>
                                     <p className="text-sm text-text-muted">Breeds Supported</p>
                                 </div>
                             </div>

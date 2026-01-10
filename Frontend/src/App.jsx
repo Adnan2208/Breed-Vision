@@ -5,6 +5,8 @@ import AnalyzePage from './pages/AnalyzePage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import AdvisoryPage from './pages/AdvisoryPage';
 import HelpPage from './pages/HelpPage';
+import NearbyServicesPage from './pages/NearbyServicesPage';
+import AuthorityPage from './pages/AuthorityPage';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/advisory" element={<AdvisoryPage />} />
         <Route path="/help" element={<HelpPage />} />
+        <Route path="/authority" element={<AuthorityPage />} />
+        <Route path="/nearby-services" element={<NearbyServicesPage />} />
       </Routes>
     </Router>
   );

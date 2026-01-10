@@ -12,6 +12,7 @@ const flwRoutes = require('./flw.routes');
 const veterinaryRoutes = require('./veterinary.routes');
 const dashboardRoutes = require('./dashboard.routes');
 const analyticsRoutes = require('./analytics.routes');
+const locationRoutes = require('./location.routes');
 
 // Health check endpoint
 router.get('/health', (req, res) => {
@@ -29,5 +30,6 @@ router.use('/flw', flwRoutes);
 router.use('/veterinary', veterinaryRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/analytics', analyticsRoutes);
+router.use('/location', locationRoutes);
 
 module.exports = router;

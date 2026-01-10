@@ -127,13 +127,6 @@ const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const server = app.listen(PORT, () => {
-  console.log('='.repeat(50));
-  console.log(`🐄 Bharat Pashudhan API Server`);
-  console.log('='.repeat(50));
-  console.log(`Environment: ${NODE_ENV}`);
-  console.log(`Port: ${PORT}`);
-  console.log(`Health Check: http://localhost:${PORT}/api/v1/health`);
-  console.log('='.repeat(50));
 });
 
 // Handle unhandled promise rejections
@@ -154,9 +147,7 @@ process.on('uncaughtException', (err) => {
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received. Shutting down gracefully...');
   server.close(() => {
-    console.log('Process terminated.');
   });
 });
 

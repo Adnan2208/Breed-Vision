@@ -12,6 +12,7 @@ const Navbar = () => {
         { name: 'Analyze Breed', path: '/analyze' },
         { name: 'Analytics', path: '/analytics' },
         { name: 'Advisory Dashboard', path: '/advisory' },
+        { name: 'Vet & NGO Services', path: '/nearby-services' },
     ];
 
     const isActive = (path) => location.pathname === path;

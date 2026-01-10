@@ -343,27 +343,11 @@ const veterinaryHospitals = [
 // Seed function
 const seedDatabase = async () => {
   try {
-    console.log('🌱 Starting database seeding...\n');
-
     // Clear existing data
-    console.log('Clearing existing veterinary hospital data...');
     await VeterinaryHospital.deleteMany({});
-    console.log('✓ Cleared existing data\n');
 
     // Seed veterinary hospitals
-    console.log('Seeding veterinary hospitals...');
-    const createdHospitals = await VeterinaryHospital.insertMany(veterinaryHospitals);
-    console.log(`  ✓ Created ${createdHospitals.length} veterinary hospitals\n`);
-
-    console.log('='.repeat(50));
-    console.log('✅ Database seeding completed successfully!');
-    console.log('='.repeat(50));
-    console.log('\n📋 Seeded Data Summary:');
-    console.log('-'.repeat(50));
-    console.log(`Veterinary Hospitals: ${createdHospitals.length}`);
-    console.log('\n🔓 Note: All API endpoints are publicly accessible');
-    console.log('   (No authentication required for hackathon demo)');
-    console.log('-'.repeat(50));
+    await VeterinaryHospital.insertMany(veterinaryHospitals);
 
     process.exit(0);
   } catch (error) {

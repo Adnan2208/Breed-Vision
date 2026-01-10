@@ -7,7 +7,9 @@ import {
     Shield,
     HelpCircle,
     ChevronLeft,
-    ChevronRight
+    ChevronRight,
+    MapPin,
+    Building2
 } from 'lucide-react';
 
 const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
@@ -31,6 +33,18 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
             path: '/advisory',
             icon: Shield,
             description: 'Breed information'
+        },
+        {
+            name: 'Authority Dashboard',
+            path: '/authority',
+            icon: Building2,
+            description: 'Authority portal'
+        },
+        {
+            name: 'Nearby Services',
+            path: '/nearby-services',
+            icon: MapPin,
+            description: 'Find vets & NGOs'
         },
     ];
 

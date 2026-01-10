@@ -28,10 +28,10 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
             description: 'View statistics'
         },
         {
-            name: 'Authority Dashboard',
-            path: '/authority',
+            name: 'Advisory Dashboard',
+            path: '/advisory',
             icon: Shield,
-            description: 'Manage breeds'
+            description: 'Breed information'
         },
     ];
 

@@ -13,8 +13,8 @@ const AppLayout = ({ children }) => {
                 return 'Breed Detection';
             case '/analytics':
                 return 'Analytics Dashboard';
-            case '/authority':
-                return 'Authority Dashboard';
+            case '/advisory':
+                return 'Advisory Dashboard';
             default:
                 return 'Dashboard';
         }

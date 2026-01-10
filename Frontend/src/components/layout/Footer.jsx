@@ -9,7 +9,7 @@ const Footer = () => {
         product: [
             { name: 'Analyze Breed', path: '/analyze' },
             { name: 'Analytics', path: '/analytics' },
-            { name: 'Authority Dashboard', path: '/authority' },
+            { name: 'Advisory Dashboard', path: '/advisory' },
         ],
         resources: [
             { name: 'Documentation', path: '#' },

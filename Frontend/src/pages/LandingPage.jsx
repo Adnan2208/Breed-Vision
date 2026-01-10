@@ -200,25 +200,32 @@ const LandingPage = () => {
                         {breeds.slice(0, 8).map((breed) => (
                             <Card
                                 key={breed.id}
-                                className="group overflow-hidden"
+                                className="group overflow-hidden cursor-pointer"
                                 padding="none"
+                                premium
                             >
-                                <div className="relative h-48 overflow-hidden">
+                                {/* Image with zoom effect */}
+                                <div className="relative h-48 overflow-hidden card-image-zoom">
                                     <img
                                         src={breed.image}
                                         alt={breed.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        className="w-full h-full object-cover"
+                                        onError={(e) => {
+                                            e.target.src = 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=400&h=300&fit=crop';
+                                        }}
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                                     <div className="absolute bottom-4 left-4 right-4">
-                                        <Badge variant="accent" size="sm">{breed.purpose}</Badge>
+                                        <Badge variant="accent" size="sm">{breed.type}</Badge>
                                     </div>
                                 </div>
                                 <div className="p-5">
-                                    <h3 className="text-lg font-bold text-text mb-1">{breed.name}</h3>
+                                    <h3 className="text-lg font-bold text-text mb-1 group-hover:text-primary transition-colors duration-300">
+                                        {breed.name}
+                                    </h3>
                                     <p className="text-sm text-text-muted mb-3">{breed.origin}</p>
                                     <p className="text-sm text-text-secondary line-clamp-2">
-                                        {breed.description}
+                                        {breed.characteristics}
                                     </p>
                                 </div>
                             </Card>
@@ -226,7 +233,7 @@ const LandingPage = () => {
                     </div>
 
                     <div className="text-center mt-10">
-                        <Link to="/authority">
+                        <Link to="/advisory">
                             <Button variant="outline" size="lg" icon={ArrowRight} iconPosition="right">
                                 View All Breeds
                             </Button>
@@ -316,7 +323,7 @@ const LandingPage = () => {
                                         Start Analyzing
                                     </Button>
                                 </Link>
-                                <Link to="/authority">
+                                <Link to="/advisory">
                                     <Button variant="ghost" size="lg" icon={ArrowRight} iconPosition="right">
                                         Explore Breeds
                                     </Button>

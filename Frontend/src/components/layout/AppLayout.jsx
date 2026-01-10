@@ -15,6 +15,10 @@ const AppLayout = ({ children }) => {
                 return 'Analytics Dashboard';
             case '/advisory':
                 return 'Advisory Dashboard';
+            case '/nearby-services':
+                return 'Vet & NGO Services';
+            case '/authority':
+                return 'Authority Dashboard';
             default:
                 return 'Dashboard';
         }

@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Scan } from 'lucide-react';
+import Button from '../ui/Button';
+
+const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
+
+    const navLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Analyze Breed', path: '/analyze' },
+        { name: 'Analytics', path: '/analytics' },
+        { name: 'Authority Dashboard', path: '/authority' },
+    ];
+
+    const isActive = (path) => location.pathname === path;
+
+    return (
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-lg border-b border-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-20">
+                    {/* Logo */}
+                    <Link to="/" className="flex items-center gap-3 group">
+                        <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <Scan className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                            <span className="text-xl font-bold text-text">Bharat</span>
+                            <span className="text-xl font-bold text-primary"> Pashudhan</span>
+                        </div>
+                    </Link>
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.path}
+                                to={link.path}
+                                className={`
+                  text-sm font-medium transition-all duration-200
+                  ${isActive(link.path)
+                                        ? 'text-primary'
+                                        : 'text-text-secondary hover:text-primary'
+                                    }
+                `}
+                            >
+                                {link.name}
+                                {isActive(link.path) && (
+                                    <div className="h-0.5 w-full bg-primary rounded-full mt-1" />
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="hidden md:block">
+                        <Link to="/analyze">
+                            <Button variant="primary" size="md" icon={Scan}>
+                                Analyze Breed
+                            </Button>
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 rounded-lg hover:bg-surface-hover transition-colors"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        {isMenuOpen ? (
+                            <X className="w-6 h-6 text-text" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-text" />
+                        )}
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Menu */}
+            {isMenuOpen && (
+                <div className="md:hidden bg-surface border-t border-gray-100 animate-slide-up">
+                    <div className="px-4 py-4 space-y-2">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.path}
+                                to={link.path}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={`
+                  block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
+                  ${isActive(link.path)
+                                        ? 'bg-primary/10 text-primary'
+                                        : 'text-text-secondary hover:bg-surface-hover'
+                                    }
+                `}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                        <div className="pt-2">
+                            <Link to="/analyze" onClick={() => setIsMenuOpen(false)}>
+                                <Button variant="primary" size="md" className="w-full" icon={Scan}>
+                                    Analyze Breed
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </nav>
+    );
+};
+
+export default Navbar;

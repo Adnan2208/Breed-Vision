@@ -17,7 +17,6 @@ function App() {
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/advisory" element={<AdvisoryPage />} />
         <Route path="/help" element={<HelpPage />} />
-        <Route path="/authority" element={<AuthorityPage />} />
         <Route path="/nearby-services" element={<NearbyServicesPage />} />
       </Routes>
     </Router>

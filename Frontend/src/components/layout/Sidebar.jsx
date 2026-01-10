@@ -35,12 +35,6 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
             description: 'Breed information'
         },
         {
-            name: 'Authority Dashboard',
-            path: '/authority',
-            icon: Building2,
-            description: 'Authority portal'
-        },
-        {
             name: 'Nearby Services',
             path: '/nearby-services',
             icon: MapPin,

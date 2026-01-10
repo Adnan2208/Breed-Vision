@@ -10,7 +10,7 @@ const FormData = require('form-data');
 class RoboflowService {
   constructor() {
     this.apiKey = process.env.ROBOFLOW_API_KEY;
-    this.modelEndpoint = process.env.ROBOFLOW_MODEL_ENDPOINT;
+    this.modelName = process.env.ROBOFLOW_MODEL_NAME || 'indian-bovine';
     this.modelVersion = process.env.ROBOFLOW_MODEL_VERSION || '1';
   }
 
@@ -21,7 +21,7 @@ class RoboflowService {
    */
   async detectBreed(imagePath) {
     try {
-      if (!this.apiKey || !this.modelEndpoint) {
+      if (!this.apiKey || !this.modelName) {
         throw new Error('Roboflow API configuration missing');
       }
 
@@ -29,8 +29,8 @@ class RoboflowService {
       const imageBuffer = fs.readFileSync(imagePath);
       const base64Image = imageBuffer.toString('base64');
 
-      // Construct API URL
-      const apiUrl = `https://detect.roboflow.com/${this.modelEndpoint}/${this.modelVersion}`;
+      // Construct API URL for serverless endpoint
+      const apiUrl = `https://serverless.roboflow.com/${this.modelName}/${this.modelVersion}`;
 
       // Make request to Roboflow API
       const response = await axios({
@@ -114,11 +114,11 @@ class RoboflowService {
    */
   async detectBreedFromUrl(imageUrl) {
     try {
-      if (!this.apiKey || !this.modelEndpoint) {
+      if (!this.apiKey || !this.modelName) {
         throw new Error('Roboflow API configuration missing');
       }
 
-      const apiUrl = `https://detect.roboflow.com/${this.modelEndpoint}/${this.modelVersion}`;
+      const apiUrl = `https://serverless.roboflow.com/${this.modelName}/${this.modelVersion}`;
 
       const response = await axios({
         method: 'POST',
@@ -202,7 +202,7 @@ class RoboflowService {
    * @returns {boolean} True if configured properly
    */
   isConfigured() {
-    return !!(this.apiKey && this.modelEndpoint);
+    return !!(this.apiKey && this.modelName);
   }
 }
 

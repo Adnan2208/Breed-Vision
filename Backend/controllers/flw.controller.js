@@ -87,7 +87,7 @@ const submitData = asyncHandler(async (req, res) => {
 /**
  * @desc    Get FLW submissions by FLW ID
  * @route   GET /api/v1/flw/submissions/:flwId
- * @access  Private
+ * @access  Public
  */
 const getSubmissionsByFLW = asyncHandler(async (req, res) => {
   const { flwId } = req.params;
@@ -124,7 +124,7 @@ const getSubmissionsByFLW = asyncHandler(async (req, res) => {
 /**
  * @desc    Get single FLW submission
  * @route   GET /api/v1/flw/submission/:id
- * @access  Private
+ * @access  Public
  */
 const getSubmission = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -142,7 +142,7 @@ const getSubmission = asyncHandler(async (req, res) => {
 /**
  * @desc    Update FLW submission
  * @route   PUT /api/v1/flw/submission/:id
- * @access  Private
+ * @access  Public
  */
 const updateSubmission = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -179,7 +179,7 @@ const updateSubmission = asyncHandler(async (req, res) => {
 /**
  * @desc    Delete FLW submission
  * @route   DELETE /api/v1/flw/submission/:id
- * @access  Private (Admin/Govt only)
+ * @access  Public
  */
 const deleteSubmission = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -198,7 +198,7 @@ const deleteSubmission = asyncHandler(async (req, res) => {
 /**
  * @desc    Get FLW statistics
  * @route   GET /api/v1/flw/stats/:flwId
- * @access  Private
+ * @access  Public
  */
 const getFLWStats = asyncHandler(async (req, res) => {
   const { flwId } = req.params;
@@ -255,7 +255,7 @@ const getFLWStats = asyncHandler(async (req, res) => {
 /**
  * @desc    Search FLW data
  * @route   GET /api/v1/flw/search
- * @access  Private
+ * @access  Public
  */
 const searchFLWData = asyncHandler(async (req, res) => {
   const {

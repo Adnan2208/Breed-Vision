@@ -1,19 +1,19 @@
 /**
  * Government Dashboard Controller
  * Analytics and reporting for government officials
+ * (All endpoints publicly accessible for hackathon demo)
  */
 
 const FLWData = require('../models/FLWData.model');
 const CattleImage = require('../models/CattleImage.model');
 const VeterinaryHospital = require('../models/VeterinaryHospital.model');
-const User = require('../models/User.model');
 const asyncHandler = require('../utils/asyncHandler');
 const { sendSuccess } = require('../utils/apiResponse');
 
 /**
  * @desc    Get dashboard overview
  * @route   GET /api/v1/dashboard/overview
- * @access  Private (Govt/Admin)
+ * @access  Public (Hackathon Demo)
  */
 const getOverview = asyncHandler(async (req, res) => {
   const { state, district, startDate, endDate } = req.query;
@@ -38,14 +38,12 @@ const getOverview = asyncHandler(async (req, res) => {
     totalFLWRecords,
     totalDetections,
     totalHospitals,
-    totalUsers,
   ] = await Promise.all([
     FLWData.countDocuments(flwQuery),
     CattleImage.countDocuments(
       Object.keys(dateFilter).length > 0 ? { createdAt: dateFilter } : {}
     ),
     VeterinaryHospital.countDocuments({ isActive: true }),
-    User.countDocuments({ isActive: true }),
   ]);
 
   // Get recent activity
@@ -59,7 +57,6 @@ const getOverview = asyncHandler(async (req, res) => {
       totalFLWRecords,
       totalDetections,
       totalHospitals,
-      totalUsers,
     },
     recentActivity: recentFLWSubmissions,
     filters: { state, district, startDate, endDate },
@@ -69,7 +66,7 @@ const getOverview = asyncHandler(async (req, res) => {
 /**
  * @desc    Get breed distribution analytics
  * @route   GET /api/v1/dashboard/breed-distribution
- * @access  Private (Govt/Admin)
+ * @access  Public (Hackathon Demo)
  */
 const getBreedDistribution = asyncHandler(async (req, res) => {
   const { state, district, startDate, endDate } = req.query;
@@ -150,7 +147,7 @@ const getBreedDistribution = asyncHandler(async (req, res) => {
 /**
  * @desc    Get disease reports
  * @route   GET /api/v1/dashboard/disease-reports
- * @access  Private (Govt/Admin)
+ * @access  Public (Hackathon Demo)
  */
 const getDiseaseReports = asyncHandler(async (req, res) => {
   const { state, district, startDate, endDate } = req.query;
@@ -248,7 +245,7 @@ const getDiseaseReports = asyncHandler(async (req, res) => {
 /**
  * @desc    Get vaccination coverage
  * @route   GET /api/v1/dashboard/vaccination-coverage
- * @access  Private (Govt/Admin)
+ * @access  Public (Hackathon Demo)
  */
 const getVaccinationCoverage = asyncHandler(async (req, res) => {
   const { state, district, startDate, endDate } = req.query;
@@ -387,7 +384,7 @@ const getVaccinationCoverage = asyncHandler(async (req, res) => {
 /**
  * @desc    Get FLW activity analytics
  * @route   GET /api/v1/dashboard/flw-activity
- * @access  Private (Govt/Admin)
+ * @access  Public (Hackathon Demo)
  */
 const getFLWActivity = asyncHandler(async (req, res) => {
   const { state, district, startDate, endDate, limit = 20 } = req.query;
@@ -467,7 +464,7 @@ const getFLWActivity = asyncHandler(async (req, res) => {
 /**
  * @desc    Export report data
  * @route   GET /api/v1/dashboard/export
- * @access  Private (Govt/Admin)
+ * @access  Public (Hackathon Demo)
  */
 const exportReport = asyncHandler(async (req, res) => {
   const { type, state, district, startDate, endDate, format = 'json' } = req.query;

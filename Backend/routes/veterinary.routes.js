@@ -1,5 +1,6 @@
 /**
  * Veterinary Hospital Routes
+ * All routes are public - no authentication required
  */
 
 const express = require('express');
@@ -16,7 +17,6 @@ const {
   getEmergencyServices,
 } = require('../controllers/veterinary.controller');
 
-const { protect, authorize } = require('../middleware/auth.middleware');
 const {
   validate,
   queryValidation,
@@ -63,37 +63,22 @@ router.get('/hospital/:id', getHospitalById);
 /**
  * @route   POST /api/v1/veterinary/hospital
  * @desc    Add new veterinary hospital
- * @access  Private (Admin/Govt only)
+ * @access  Public
  */
-router.post(
-  '/hospital',
-  protect,
-  authorize('admin', 'government'),
-  addHospital
-);
+router.post('/hospital', addHospital);
 
 /**
  * @route   PUT /api/v1/veterinary/hospital/:id
  * @desc    Update veterinary hospital
- * @access  Private (Admin/Govt only)
+ * @access  Public
  */
-router.put(
-  '/hospital/:id',
-  protect,
-  authorize('admin', 'government'),
-  updateHospital
-);
+router.put('/hospital/:id', updateHospital);
 
 /**
  * @route   DELETE /api/v1/veterinary/hospital/:id
  * @desc    Delete veterinary hospital
- * @access  Private (Admin only)
+ * @access  Public
  */
-router.delete(
-  '/hospital/:id',
-  protect,
-  authorize('admin'),
-  deleteHospital
-);
+router.delete('/hospital/:id', deleteHospital);
 
 module.exports = router;

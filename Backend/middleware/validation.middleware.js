@@ -19,37 +19,6 @@ const validate = (req, res, next) => {
 };
 
 /**
- * Auth validation rules
- */
-const authValidation = {
-  register: [
-    body('username')
-      .trim()
-      .isLength({ min: 3 })
-      .withMessage('Username must be at least 3 characters'),
-    body('email')
-      .isEmail()
-      .normalizeEmail()
-      .withMessage('Please provide a valid email'),
-    body('password')
-      .isLength({ min: 6 })
-      .withMessage('Password must be at least 6 characters'),
-    body('role')
-      .optional()
-      .isIn(['admin', 'government', 'flw', 'user'])
-      .withMessage('Invalid role'),
-  ],
-
-  login: [
-    body('email')
-      .isEmail()
-      .normalizeEmail()
-      .withMessage('Please provide a valid email'),
-    body('password').notEmpty().withMessage('Password is required'),
-  ],
-};
-
-/**
  * FLW Data validation rules
  */
 const flwDataValidation = {
@@ -109,7 +78,6 @@ const queryValidation = {
 
 module.exports = {
   validate,
-  authValidation,
   flwDataValidation,
   queryValidation,
 };

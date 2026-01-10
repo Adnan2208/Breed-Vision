@@ -1,57 +1,20 @@
 /**
  * Database Seeder Script
- * Seeds initial data for Veterinary Hospitals and Admin User
+ * Seeds initial data for Veterinary Hospitals
+ * (Authentication removed for hackathon demo)
  */
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const bcrypt = require('bcryptjs');
 
 // Load env vars
 dotenv.config();
 
 // Import models
-const User = require('../models/User.model');
 const VeterinaryHospital = require('../models/VeterinaryHospital.model');
 
 // Connect to database
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bharat-pashudhan');
-
-// Sample Admin User
-const adminUser = {
-  username: 'admin',
-  email: 'admin@bharatpashudhan.gov.in',
-  password: 'Admin@123',
-  role: 'admin',
-  department: 'Animal Husbandry',
-  state: 'Delhi',
-  district: 'New Delhi',
-  isActive: true,
-};
-
-// Sample Government User
-const govtUser = {
-  username: 'govt_officer',
-  email: 'officer@bharatpashudhan.gov.in',
-  password: 'Govt@123',
-  role: 'government',
-  department: 'Department of Animal Husbandry',
-  state: 'Gujarat',
-  district: 'Ahmedabad',
-  isActive: true,
-};
-
-// Sample FLW User
-const flwUser = {
-  username: 'flw_worker_001',
-  email: 'flw001@bharatpashudhan.gov.in',
-  password: 'Flw@123',
-  role: 'flw',
-  department: 'Field Operations',
-  state: 'Gujarat',
-  district: 'Vadodara',
-  isActive: true,
-};
 
 // Sample Veterinary Hospitals
 const veterinaryHospitals = [
@@ -383,22 +346,9 @@ const seedDatabase = async () => {
     console.log('🌱 Starting database seeding...\n');
 
     // Clear existing data
-    console.log('Clearing existing data...');
-    await User.deleteMany({});
+    console.log('Clearing existing veterinary hospital data...');
     await VeterinaryHospital.deleteMany({});
     console.log('✓ Cleared existing data\n');
-
-    // Seed users
-    console.log('Seeding users...');
-    const createdAdmin = await User.create(adminUser);
-    console.log(`  ✓ Created admin user: ${createdAdmin.email}`);
-
-    const createdGovt = await User.create(govtUser);
-    console.log(`  ✓ Created government user: ${createdGovt.email}`);
-
-    const createdFLW = await User.create(flwUser);
-    console.log(`  ✓ Created FLW user: ${createdFLW.email}`);
-    console.log('');
 
     // Seed veterinary hospitals
     console.log('Seeding veterinary hospitals...');
@@ -408,17 +358,11 @@ const seedDatabase = async () => {
     console.log('='.repeat(50));
     console.log('✅ Database seeding completed successfully!');
     console.log('='.repeat(50));
-    console.log('\nTest Credentials:');
+    console.log('\n📋 Seeded Data Summary:');
     console.log('-'.repeat(50));
-    console.log('Admin:');
-    console.log(`  Email: ${adminUser.email}`);
-    console.log(`  Password: ${adminUser.password}`);
-    console.log('\nGovernment Officer:');
-    console.log(`  Email: ${govtUser.email}`);
-    console.log(`  Password: ${govtUser.password}`);
-    console.log('\nFLW Worker:');
-    console.log(`  Email: ${flwUser.email}`);
-    console.log(`  Password: ${flwUser.password}`);
+    console.log(`Veterinary Hospitals: ${createdHospitals.length}`);
+    console.log('\n🔓 Note: All API endpoints are publicly accessible');
+    console.log('   (No authentication required for hackathon demo)');
     console.log('-'.repeat(50));
 
     process.exit(0);

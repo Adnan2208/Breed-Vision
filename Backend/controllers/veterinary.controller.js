@@ -110,7 +110,7 @@ const getHospitalById = asyncHandler(async (req, res) => {
 /**
  * @desc    Add new veterinary hospital
  * @route   POST /api/v1/veterinary/hospital
- * @access  Private (Admin/Govt only)
+ * @access  Public
  */
 const addHospital = asyncHandler(async (req, res) => {
   const {
@@ -146,7 +146,7 @@ const addHospital = asyncHandler(async (req, res) => {
 /**
  * @desc    Update veterinary hospital
  * @route   PUT /api/v1/veterinary/hospital/:id
- * @access  Private (Admin/Govt only)
+ * @access  Public
  */
 const updateHospital = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -168,7 +168,7 @@ const updateHospital = asyncHandler(async (req, res) => {
 /**
  * @desc    Delete veterinary hospital
  * @route   DELETE /api/v1/veterinary/hospital/:id
- * @access  Private (Admin only)
+ * @access  Public
  */
 const deleteHospital = asyncHandler(async (req, res) => {
   const { id } = req.params;

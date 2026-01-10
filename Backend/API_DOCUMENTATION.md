@@ -5,103 +5,14 @@
 http://localhost:5000/api/v1
 ```
 
-## Authentication
+## 🔓 Public API (No Authentication Required)
 
-All protected routes require a Bearer token in the Authorization header:
-```
-Authorization: Bearer <token>
-```
+**Note:** All endpoints are publicly accessible for hackathon demonstration purposes.
+No signup, login, or authentication tokens are required.
 
 ---
 
-## 1. Authentication APIs
-
-### Register User
-```http
-POST /api/v1/auth/register
-Content-Type: application/json
-
-{
-  "username": "flw_worker_001",
-  "email": "worker@example.com",
-  "password": "password123",
-  "role": "flw",
-  "department": "Animal Husbandry",
-  "state": "Gujarat",
-  "district": "Ahmedabad"
-}
-
-Response (201):
-{
-  "success": true,
-  "statusCode": 201,
-  "message": "User registered successfully",
-  "data": {
-    "user": {
-      "id": "65abc123def456",
-      "username": "flw_worker_001",
-      "email": "worker@example.com",
-      "role": "flw"
-    },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-  }
-}
-```
-
-### Login
-```http
-POST /api/v1/auth/login
-Content-Type: application/json
-
-{
-  "email": "worker@example.com",
-  "password": "password123"
-}
-
-Response (200):
-{
-  "success": true,
-  "statusCode": 200,
-  "message": "Login successful",
-  "data": {
-    "user": {
-      "id": "65abc123def456",
-      "username": "flw_worker_001",
-      "email": "worker@example.com",
-      "role": "flw",
-      "lastLogin": "2026-01-10T10:30:00.000Z"
-    },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-  }
-}
-```
-
-### Get Profile
-```http
-GET /api/v1/auth/me
-Authorization: Bearer <token>
-
-Response (200):
-{
-  "success": true,
-  "statusCode": 200,
-  "message": "Profile retrieved successfully",
-  "data": {
-    "user": {
-      "id": "65abc123def456",
-      "username": "flw_worker_001",
-      "email": "worker@example.com",
-      "role": "flw",
-      "state": "Gujarat",
-      "district": "Ahmedabad"
-    }
-  }
-}
-```
-
----
-
-## 2. Breed Detection APIs
+## 1. Breed Detection APIs
 
 ### Detect Breed from Image
 ```http
@@ -213,7 +124,7 @@ Response (200):
 
 ---
 
-## 3. FLW Data Collection APIs
+## 2. FLW Data Collection APIs
 
 ### Submit FLW Data
 ```http
@@ -268,7 +179,6 @@ Response (201):
 ### Get FLW Submissions
 ```http
 GET /api/v1/flw/submissions/FLW-GJ-001?page=1&limit=10
-Authorization: Bearer <token>
 
 Response (200):
 {
@@ -290,7 +200,6 @@ Response (200):
 ### Search FLW Data
 ```http
 GET /api/v1/flw/search?state=Gujarat&breed=Gir&healthIssue=mastitis
-Authorization: Bearer <token>
 
 Response (200):
 {
@@ -306,7 +215,7 @@ Response (200):
 
 ---
 
-## 4. Veterinary Hospital APIs
+## 3. Veterinary Hospital APIs
 
 ### Get All Hospitals
 ```http
@@ -385,12 +294,11 @@ Response (200):
 
 ---
 
-## 5. Government Dashboard APIs (Protected)
+## 4. Government Dashboard APIs
 
 ### Get Dashboard Overview
 ```http
 GET /api/v1/dashboard/overview?state=Gujarat&startDate=2026-01-01
-Authorization: Bearer <admin_token>
 
 Response (200):
 {
@@ -412,7 +320,6 @@ Response (200):
 ### Get Breed Distribution
 ```http
 GET /api/v1/dashboard/breed-distribution?state=Gujarat
-Authorization: Bearer <admin_token>
 
 Response (200):
 {
@@ -437,7 +344,6 @@ Response (200):
 ### Get Disease Reports
 ```http
 GET /api/v1/dashboard/disease-reports
-Authorization: Bearer <admin_token>
 
 Response (200):
 {
@@ -460,7 +366,6 @@ Response (200):
 ### Get Vaccination Coverage
 ```http
 GET /api/v1/dashboard/vaccination-coverage?state=Gujarat
-Authorization: Bearer <admin_token>
 
 Response (200):
 {
@@ -481,7 +386,6 @@ Response (200):
 ### Get FLW Activity
 ```http
 GET /api/v1/dashboard/flw-activity
-Authorization: Bearer <admin_token>
 
 Response (200):
 {
@@ -505,7 +409,6 @@ Response (200):
 ### Export Report
 ```http
 GET /api/v1/dashboard/export?type=breed&format=csv&state=Gujarat
-Authorization: Bearer <admin_token>
 
 Response: CSV file download
 ```
@@ -521,24 +424,6 @@ Response: CSV file download
   "statusCode": 400,
   "message": "Validation failed",
   "errors": ["FLW ID is required", "Village is required"]
-}
-```
-
-### Unauthorized (401)
-```json
-{
-  "success": false,
-  "statusCode": 401,
-  "message": "Access denied. No token provided."
-}
-```
-
-### Forbidden (403)
-```json
-{
-  "success": false,
-  "statusCode": 403,
-  "message": "User role 'flw' is not authorized to access this route."
 }
 ```
 

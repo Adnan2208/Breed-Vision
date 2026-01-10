@@ -7,7 +7,6 @@ const express = require('express');
 const router = express.Router();
 
 // Import route modules
-const authRoutes = require('./auth.routes');
 const breedRoutes = require('./breed.routes');
 const flwRoutes = require('./flw.routes');
 const veterinaryRoutes = require('./veterinary.routes');
@@ -24,7 +23,6 @@ router.get('/health', (req, res) => {
 });
 
 // Mount routes
-router.use('/auth', authRoutes);
 router.use('/breed', breedRoutes);
 router.use('/flw', flwRoutes);
 router.use('/veterinary', veterinaryRoutes);

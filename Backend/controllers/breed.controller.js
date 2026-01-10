@@ -38,7 +38,7 @@ const detectBreed = asyncHandler(async (req, res) => {
       detectedBreed: detectionResult.breed,
       confidence: detectionResult.confidence,
       detectionResponse: detectionResult.rawResponse,
-      uploadedBy: req.user ? req.user.id : 'anonymous',
+      uploadedBy: 'public',
     });
 
     // Prepare response
@@ -189,20 +189,18 @@ const getSupportedLanguages = asyncHandler(async (req, res) => {
 /**
  * @desc    Get detection history
  * @route   GET /api/v1/breed/history
- * @access  Private
+ * @access  Public
  */
 const getDetectionHistory = asyncHandler(async (req, res) => {
   const { page = 1, limit = 10 } = req.query;
 
-  const query = req.user ? { uploadedBy: req.user.id } : {};
-
-  const images = await CattleImage.find(query)
+  const images = await CattleImage.find()
     .sort({ createdAt: -1 })
     .skip((page - 1) * limit)
     .limit(parseInt(limit))
     .select('filename detectedBreed confidence createdAt');
 
-  const total = await CattleImage.countDocuments(query);
+  const total = await CattleImage.countDocuments();
 
   sendSuccess(res, 200, {
     images,

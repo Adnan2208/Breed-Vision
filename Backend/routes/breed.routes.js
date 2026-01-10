@@ -1,5 +1,6 @@
 /**
  * Breed Detection Routes
+ * All routes are public - no authentication required
  */
 
 const express = require('express');
@@ -14,7 +15,6 @@ const {
   getDetectionHistory,
 } = require('../controllers/breed.controller');
 
-const { protect, optionalAuth } = require('../middleware/auth.middleware');
 const { uploadLimiter } = require('../middleware/rateLimit.middleware');
 const {
   uploadSingleImage,
@@ -29,7 +29,6 @@ const {
 router.post(
   '/detect',
   uploadLimiter,
-  optionalAuth,
   uploadSingleImage('image'),
   validateFileExists,
   detectBreed
@@ -67,9 +66,9 @@ router.get('/languages', getSupportedLanguages);
 
 /**
  * @route   GET /api/v1/breed/history
- * @desc    Get user's detection history
- * @access  Private
+ * @desc    Get detection history
+ * @access  Public
  */
-router.get('/history', protect, getDetectionHistory);
+router.get('/history', getDetectionHistory);
 
 module.exports = router;

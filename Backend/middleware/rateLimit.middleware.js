@@ -10,7 +10,7 @@ const rateLimit = require('express-rate-limit');
  */
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
+  max: 500, // Increased limit for hackathon - 500 requests per 15 mins
   message: {
     success: false,
     statusCode: 429,
@@ -21,26 +21,11 @@ const apiLimiter = rateLimit({
 });
 
 /**
- * Auth routes rate limiter (stricter)
- */
-const authLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hour
-  max: 10, // Limit each IP to 10 login attempts per hour
-  message: {
-    success: false,
-    statusCode: 429,
-    message: 'Too many login attempts, please try again after an hour.',
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-/**
  * Upload rate limiter
  */
 const uploadLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 50, // Limit each IP to 50 uploads per hour
+  max: 100, // Increased limit for hackathon - 100 uploads per hour
   message: {
     success: false,
     statusCode: 429,
@@ -52,6 +37,5 @@ const uploadLimiter = rateLimit({
 
 module.exports = {
   apiLimiter,
-  authLimiter,
   uploadLimiter,
 };

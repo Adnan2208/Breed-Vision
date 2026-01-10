@@ -1,5 +1,6 @@
 /**
  * FLW (Field Level Worker) Routes
+ * All routes are public - no authentication required
  */
 
 const express = require('express');
@@ -15,7 +16,6 @@ const {
   searchFLWData,
 } = require('../controllers/flw.controller');
 
-const { protect, authorize } = require('../middleware/auth.middleware');
 const {
   validate,
   flwDataValidation,
@@ -25,18 +25,17 @@ const {
 /**
  * @route   POST /api/v1/flw/submit
  * @desc    Submit FLW data collection
- * @access  Public (FLW can submit without login)
+ * @access  Public
  */
 router.post('/submit', flwDataValidation.create, validate, submitData);
 
 /**
  * @route   GET /api/v1/flw/submissions/:flwId
  * @desc    Get submissions by FLW ID
- * @access  Private
+ * @access  Public
  */
 router.get(
   '/submissions/:flwId',
-  protect,
   queryValidation.pagination,
   validate,
   getSubmissionsByFLW
@@ -45,18 +44,17 @@ router.get(
 /**
  * @route   GET /api/v1/flw/submission/:id
  * @desc    Get single submission
- * @access  Private
+ * @access  Public
  */
-router.get('/submission/:id', protect, getSubmission);
+router.get('/submission/:id', getSubmission);
 
 /**
  * @route   PUT /api/v1/flw/submission/:id
  * @desc    Update submission
- * @access  Private
+ * @access  Public
  */
 router.put(
   '/submission/:id',
-  protect,
   flwDataValidation.update,
   validate,
   updateSubmission
@@ -65,30 +63,24 @@ router.put(
 /**
  * @route   DELETE /api/v1/flw/submission/:id
  * @desc    Delete submission
- * @access  Private (Admin/Govt only)
+ * @access  Public
  */
-router.delete(
-  '/submission/:id',
-  protect,
-  authorize('admin', 'government'),
-  deleteSubmission
-);
+router.delete('/submission/:id', deleteSubmission);
 
 /**
  * @route   GET /api/v1/flw/stats/:flwId
  * @desc    Get FLW statistics
- * @access  Private
+ * @access  Public
  */
-router.get('/stats/:flwId', protect, getFLWStats);
+router.get('/stats/:flwId', getFLWStats);
 
 /**
  * @route   GET /api/v1/flw/search
  * @desc    Search FLW data
- * @access  Private
+ * @access  Public
  */
 router.get(
   '/search',
-  protect,
   queryValidation.pagination,
   queryValidation.dateRange,
   validate,

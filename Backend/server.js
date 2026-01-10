@@ -99,8 +99,8 @@ app.get('/', (req, res) => {
     message: 'Welcome to Bharat Pashudhan API',
     version: '1.0.0',
     documentation: '/api/v1/health',
+    note: 'All endpoints are publicly accessible - no authentication required',
     endpoints: {
-      auth: '/api/v1/auth',
       breed: '/api/v1/breed',
       flw: '/api/v1/flw',
       veterinary: '/api/v1/veterinary',

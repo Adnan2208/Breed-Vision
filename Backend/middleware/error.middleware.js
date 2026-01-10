@@ -39,15 +39,6 @@ const errorHandler = (err, req, res, next) => {
     error = new ApiError(400, message, messages);
   }
 
-  // JWT errors
-  if (err.name === 'JsonWebTokenError') {
-    error = new ApiError(401, 'Invalid token');
-  }
-
-  if (err.name === 'TokenExpiredError') {
-    error = new ApiError(401, 'Token has expired');
-  }
-
   // Multer file size error
   if (err.code === 'LIMIT_FILE_SIZE') {
     error = new ApiError(400, 'File too large. Maximum size allowed is 10MB');

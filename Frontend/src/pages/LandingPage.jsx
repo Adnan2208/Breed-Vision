@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     Scan,
-    Target,
-    Lightbulb,
     ArrowRight,
     CheckCircle,
     TrendingUp,
@@ -13,6 +11,7 @@ import {
 import { Navbar, Footer } from '../components/layout';
 import { Button, Card, Badge } from '../components/ui';
 import { breeds } from '../data/mockData';
+import BreedVisionShowcase from '../components/BreedVisionShowcase';
 
 const LandingPage = () => {
     return (
@@ -108,75 +107,8 @@ const LandingPage = () => {
                 </div>
             </section>
 
-            {/* Problem & Solution Section */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <Badge variant="accent" className="mb-4">The Challenge</Badge>
-                        <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">
-                            Why Breed Identification Matters
-                        </h2>
-                        <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-                            Accurate breed identification is crucial for better livestock management,
-                            breeding programs, and agricultural productivity.
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {/* Problem Card */}
-                        <Card className="group relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-secondary-light" />
-                            <div className="flex items-start gap-4">
-                                <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                                    <Target className="w-7 h-7 text-secondary" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-text mb-3">The Problem</h3>
-                                    <ul className="space-y-3">
-                                        {[
-                                            'Difficulty in accurate breed identification',
-                                            'Lack of accessible tools for farmers',
-                                            'Poor breeding decisions affecting productivity',
-                                            'Limited knowledge of breed-specific care'
-                                        ].map((item, index) => (
-                                            <li key={index} className="flex items-start gap-2 text-text-secondary">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </Card>
-
-                        {/* Solution Card */}
-                        <Card className="group relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-light" />
-                            <div className="flex items-start gap-4">
-                                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                    <Lightbulb className="w-7 h-7 text-primary" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-text mb-3">Our Solution</h3>
-                                    <ul className="space-y-3">
-                                        {[
-                                            'AI-based image analysis for instant recognition',
-                                            'Support for 12+ indigenous cattle breeds',
-                                            'Breed-specific advisory and care guidelines',
-                                            'Multi-language support for all farmers'
-                                        ].map((item, index) => (
-                                            <li key={index} className="flex items-start gap-2 text-text-secondary">
-                                                <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </Card>
-                    </div>
-                </div>
-            </section>
+            {/* Premium Scrolling Showcase - Problem, Solution, Impact */}
+            <BreedVisionShowcase />
 
             {/* Breed Overview Section */}
             <section className="py-20 px-4 sm:px-6 lg:px-8">

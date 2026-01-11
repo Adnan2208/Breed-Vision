@@ -29,6 +29,9 @@ const routes = require('./routes');
 // Initialize Express app
 const app = express();
 
+// Trust proxy for deployment behind reverse proxies (Render, Heroku, etc.)
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 

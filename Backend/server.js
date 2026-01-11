@@ -84,13 +84,11 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Mount all routes under /api/v1
 app.use('/api/v1', routes);
 
-// Legacy route support (redirect to v1)
-app.use('/api', (req, res, next) => {
-  if (!req.path.startsWith('/v1')) {
-    return res.redirect(301, `/api/v1${req.path}`);
-  }
-  next();
-});
+// Also mount routes under /api (without version) for flexibility
+app.use('/api', routes);
+
+// Mount routes at root level for requests like /breed/detect
+app.use('/', routes);
 
 // Root endpoint
 app.get('/', (req, res) => {

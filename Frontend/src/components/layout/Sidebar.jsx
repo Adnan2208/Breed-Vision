@@ -59,12 +59,14 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
             {/* Logo */}
             <div className="h-20 flex items-center justify-center border-b border-gray-100 px-4">
                 <NavLink to="/" className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-md flex-shrink-0">
-                        <Scan className="w-5 h-5 text-white" />
-                    </div>
+                    <img 
+                        src="/favicon.jpg" 
+                        alt="Logo" 
+                        className="w-10 h-10 rounded-xl shadow-md flex-shrink-0 object-cover"
+                    />
                     {!isCollapsed && (
                         <span className="font-bold text-text whitespace-nowrap">
-                            Bharat<span className="text-primary"> Pashudhan</span>
+                            Breed<span className="text-primary"> Vision</span>
                         </span>
                     )}
                 </NavLink>

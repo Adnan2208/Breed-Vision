@@ -898,7 +898,7 @@ const AnalyzePage = () => {
                         ) : (
                             <Card padding="lg" className="h-full flex flex-col items-center justify-center text-center min-h-[400px]">
                                 <div className="w-20 h-20 rounded-2xl bg-gray-100 flex items-center justify-center mb-6">
-                                    <Scan className="w-10 h-10 text-text-muted" />
+                                    <img src="/favicon.jpg" alt="Logo" className="w-12 h-12 rounded-xl object-cover" />
                                 </div>
                                 <h3 className="text-xl font-semibold text-text mb-2">
                                     No Analysis Yet

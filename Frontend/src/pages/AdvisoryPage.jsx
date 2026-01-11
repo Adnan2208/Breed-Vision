@@ -66,9 +66,7 @@ const AdvisoryPage = () => {
                 {/* Header */}
                 <div className="mb-8">
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                            <BookOpen className="w-5 h-5 text-white" />
-                        </div>
+                        <img src="/favicon.jpg" alt="Logo" className="w-10 h-10 rounded-xl object-cover shadow-lg" />
                         <h2 className="text-sm text-text-muted uppercase tracking-wide">
                             Comprehensive Breed Database
                         </h2>

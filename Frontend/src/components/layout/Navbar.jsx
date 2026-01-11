@@ -23,15 +23,17 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-3 group">
-                        <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center shadow-lg 
-                          group-hover:shadow-[0_10px_30px_rgba(15,118,110,0.3)] 
-                          group-hover:-translate-y-0.5
-                          transition-all duration-300 ease-out">
-                            <Scan className="w-6 h-6 text-white" />
-                        </div>
+                        <img 
+                            src="/favicon.jpg" 
+                            alt="Breed Vision Logo" 
+                            className="w-12 h-12 rounded-xl shadow-lg object-cover
+                              group-hover:shadow-[0_10px_30px_rgba(15,118,110,0.3)] 
+                              group-hover:-translate-y-0.5
+                              transition-all duration-300 ease-out"
+                        />
                         <div>
-                            <span className="text-xl font-bold text-text">Bharat</span>
-                            <span className="text-xl font-bold text-primary"> Pashudhan</span>
+                            <span className="text-xl font-bold text-text">Breed</span>
+                            <span className="text-xl font-bold text-primary"> Vision</span>
                         </div>
                     </Link>
 
